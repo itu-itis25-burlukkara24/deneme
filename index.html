@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zehra'yı Ne Kadar Seviyorum</title>
+    <link rel="stylesheet" href="zehra.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>Zehra'yı ne kadar seviyorum</h1>
+    </header>
+
+    <main>
+      <section
+        class="slider slider--full"
+        aria-label="Dünya'dan evrenlere kayan yolculuk"
+      >
+        <div class="slider__viewport">
+          <div class="slider__track" id="sliderTrack">
+            <article class="slide" data-scene="earth">
+              <div class="slide__media">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg"
+                  alt="Dünya'nın uzaydan görünüşü"
+                  loading="lazy"
+                />
+              </div>
+              <div class="slide__copy">
+                <h2>Dünya</h2>
+                <div class="slide__mantra">Bundan da fazla.</div>
+              </div>
+            </article>
+
+            <article class="slide" data-scene="solar">
+              <div class="slide__media">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Solar_sys.jpg"
+                  alt="Güneş Sistemi illüstrasyonu"
+                  loading="lazy"
+                />
+              </div>
+              <div class="slide__copy">
+                <h2>Güneş Sistemi</h2>
+                <div class="slide__mantra">Bundan da fazla.</div>
+              </div>
+            </article>
+
+            <article class="slide" data-scene="galaxies">
+              <div class="slide__media">
+                <img
+                  src="https://www.nasa.gov/wp-content/uploads/2023/03/hubble15_potw1310a.jpg"
+                  alt="Galaksilerle dolu Hubble fotoğrafı"
+                  loading="lazy"
+                />
+              </div>
+              <div class="slide__copy">
+                <h2>Evrenler</h2>
+                <div class="slide__mantra">Bundan da fazla.</div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="slider__controls" role="tablist" aria-label="Sahne seçici">
+          <button
+            class="control control--active"
+            data-index="0"
+            aria-label="Dünya sahnesine git"
+            aria-selected="true"
+          >
+            Dünya
+          </button>
+          <button
+            class="control"
+            data-index="1"
+            aria-label="Güneş Sistemi sahnesine git"
+          >
+            Güneş Sistemi
+          </button>
+          <button
+            class="control"
+            data-index="2"
+            aria-label="Evrenler sahnesine git"
+          >
+            Evrenler
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const track = document.getElementById("sliderTrack");
+      const controls = document.querySelectorAll(".control");
+
+      controls.forEach((control, index) => {
+        control.addEventListener("click", () => {
+          track.style.transform = `translateX(-${index * 100}%)`;
+
+          controls.forEach((btn) => {
+            btn.classList.toggle("control--active", btn === control);
+            btn.setAttribute("aria-selected", btn === control);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+
