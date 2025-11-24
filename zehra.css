@@ -152,16 +152,45 @@ img {
 }
 
 .love-wall__decor {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-size: 1.5rem;
-  opacity: 0.9;
+  width: min(92vw, 560px);
+  height: 140px;
+  position: relative;
 }
 
 .love-wall__decor span {
+  position: absolute;
+  font-size: 1.8rem;
   animation: float 6s ease-in-out infinite;
+}
+
+.love-wall__decor span:nth-child(1) {
+  top: 10px;
+  left: 5%;
+}
+
+.love-wall__decor span:nth-child(2) {
+  top: 60px;
+  left: 22%;
+}
+
+.love-wall__decor span:nth-child(3) {
+  top: 20px;
+  left: 40%;
+}
+
+.love-wall__decor span:nth-child(4) {
+  top: 70px;
+  left: 58%;
+}
+
+.love-wall__decor span:nth-child(5) {
+  top: 15px;
+  left: 75%;
+}
+
+.love-wall__decor span:nth-child(6) {
+  top: 80px;
+  left: 88%;
 }
 
 .love-wall__photo {
