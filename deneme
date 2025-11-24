@@ -61,43 +61,47 @@
             </article>
           </div>
         </div>
-        <button class="slider__button" id="sliderButton" type="button">
-          sağa kaydır
-        </button>
-      </section>
 
-      <section class="love-wall" aria-label="Bizim fotoğrafımız">
-        <div class="love-wall__decor" aria-hidden="true">
-          <span>❤️</span>
-          <span>🌸</span>
-          <span>🐞</span>
-          <span>🐱</span>
-          <span>🌼</span>
-          <span>💜</span>
+        <div class="slider__controls" role="tablist" aria-label="Sahne seçici">
+          <button
+            class="control control--active"
+            data-index="0"
+            aria-label="Dünya sahnesine git"
+            aria-selected="true"
+          >
+            Dünya
+          </button>
+          <button
+            class="control"
+            data-index="1"
+            aria-label="Güneş Sistemi sahnesine git"
+          >
+            Güneş Sistemi
+          </button>
+          <button
+            class="control"
+            data-index="2"
+            aria-label="Evrenler sahnesine git"
+          >
+            Evrenler
+          </button>
         </div>
-        <figure class="love-wall__photo">
-          <img
-            src="images/zehra-ve-ben.jpg"
-            alt="İkimizin birlikte çekildiği fotoğraf"
-          />
-          <figcaption>evrenin en güzel çiçeği: Zehra</figcaption>
-        </figure>
-      </section>
-
-      <section class="final-note" aria-label="Sevgi mesajı">
-        <p>Seni çok seviyorum balım.</p>
       </section>
     </main>
 
     <script>
       const track = document.getElementById("sliderTrack");
-      const slides = document.querySelectorAll(".slide");
-      const triggerBtn = document.getElementById("sliderButton");
-      let currentIndex = 0;
+      const controls = document.querySelectorAll(".control");
 
-      triggerBtn.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      controls.forEach((control, index) => {
+        control.addEventListener("click", () => {
+          track.style.transform = `translateX(-${index * 100}%)`;
+
+          controls.forEach((btn) => {
+            btn.classList.toggle("control--active", btn === control);
+            btn.setAttribute("aria-selected", btn === control);
+          });
+        });
       });
     </script>
   </body>
