@@ -1,0 +1,198 @@
+/* ============================================
+   Final Section Styles
+   ============================================ */
+
+.final-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center,
+            var(--bordo-dark) 0%,
+            var(--night-deep) 70%,
+            #000 100%);
+}
+
+/* Background Stars */
+.final-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.final-star {
+    position: absolute;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--gold);
+    animation: starTwinkle 3s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+/* Content */
+.final-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: var(--space-md);
+}
+
+/* Giant Heart */
+.giant-heart {
+    font-size: clamp(8rem, 25vw, 15rem);
+    margin-bottom: var(--space-md);
+    filter: drop-shadow(0 0 20px var(--bordo-glow));
+}
+
+.final-text {
+    font-size: clamp(2rem, 8vw, 5rem);
+    margin-bottom: var(--space-sm);
+    text-shadow: 0 0 30px var(--gold-glow);
+}
+
+.final-subtitle {
+    font-family: var(--font-elegant);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--cream);
+    opacity: 0.9;
+}
+
+/* Floating Hearts */
+.floating-hearts {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.mini-heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 2rem;
+    animation: floatUp 5s ease-in-out infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-150px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Van Gogh Swirls */
+.final-swirls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.final-swirl {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    animation: finalSwirlSpin 30s linear infinite;
+}
+
+.swirl-a {
+    width: 600px;
+    height: 600px;
+    background: var(--starry-blue);
+    opacity: 0.3;
+    top: -200px;
+    right: -200px;
+}
+
+.swirl-b {
+    width: 500px;
+    height: 500px;
+    background: var(--bordo);
+    opacity: 0.4;
+    bottom: -150px;
+    left: -150px;
+    animation-direction: reverse;
+}
+
+.swirl-c {
+    width: 400px;
+    height: 400px;
+    background: var(--gold);
+    opacity: 0.15;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-duration: 20s;
+}
+
+@keyframes finalSwirlSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .giant-heart {
+        font-size: 8rem;
+    }
+
+    .final-swirl {
+        filter: blur(80px);
+    }
+
+    .swirl-a,
+    .swirl-b {
+        width: 300px;
+        height: 300px;
+    }
+
+    .swirl-c {
+        width: 200px;
+        height: 200px;
+    }
+
+    .mini-heart {
+        font-size: 1.5rem;
+    }
+}

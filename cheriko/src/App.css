@@ -1,0 +1,47 @@
+/* ============================================
+   App Main Styles
+   ============================================ */
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Smooth scroll behavior for entire app */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background: var(--bordo);
+  color: var(--gold);
+}
+
+::-moz-selection {
+  background: var(--bordo);
+  color: var(--gold);
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Ensure smooth animations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent horizontal overflow */
+body {
+  overflow-x: hidden;
+}

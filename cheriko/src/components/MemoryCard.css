@@ -1,0 +1,198 @@
+/* ============================================
+   Memory Card Styles
+   ============================================ */
+
+.memory-card-wrapper {
+    width: 100%;
+    max-width: 500px;
+    padding: var(--space-sm);
+}
+
+.memory-card-wrapper.left {
+    align-self: flex-start;
+    margin-right: auto;
+}
+
+.memory-card-wrapper.right {
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.memory-card {
+    position: relative;
+    padding: var(--space-md);
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.memory-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        var(--glass-shadow),
+        0 0 40px var(--gold-glow);
+}
+
+/* Date Badge */
+.memory-date {
+    position: absolute;
+    top: -10px;
+    right: var(--space-md);
+    padding: 0.5rem 1.5rem;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 15px var(--gold-glow);
+}
+
+.date-text {
+    color: var(--bordo-dark);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* Image Container */
+.memory-image-container {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: var(--space-sm);
+    position: relative;
+}
+
+.memory-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.memory-card:hover .memory-image {
+    transform: scale(1.05);
+}
+
+/* Image Placeholder */
+.memory-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--night-deep) 0%, var(--bordo-dark) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.placeholder-swirl {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--starry-blue) 0%, transparent 70%);
+    opacity: 0.3;
+    animation: placeholderSpin 15s linear infinite;
+}
+
+@keyframes placeholderSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.placeholder-text {
+    font-size: 3rem;
+    z-index: 1;
+}
+
+.placeholder-hint {
+    font-family: var(--font-handwriting);
+    font-size: 1rem;
+    color: var(--gold);
+    opacity: 0.7;
+    z-index: 1;
+}
+
+/* Content */
+.memory-content {
+    padding-top: var(--space-xs);
+}
+
+.memory-title {
+    color: var(--gold);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px var(--gold-glow);
+}
+
+.memory-description {
+    color: var(--cream-soft);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Decorative Stars */
+.memory-decoration {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    display: flex;
+    gap: 8px;
+}
+
+.decoration-star {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: decorationTwinkle 2s ease-in-out infinite;
+}
+
+.decoration-star:nth-child(2) {
+    animation-delay: 0.5s;
+    width: 8px;
+    height: 8px;
+}
+
+.decoration-star:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes decorationTwinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .memory-card-wrapper {
+        max-width: 100%;
+    }
+
+    .memory-card-wrapper.left,
+    .memory-card-wrapper.right {
+        align-self: center;
+        margin: 0 auto;
+    }
+
+    .memory-image-container {
+        height: 180px;
+    }
+
+    .memory-title {
+        font-size: 1.3rem;
+    }
+}
