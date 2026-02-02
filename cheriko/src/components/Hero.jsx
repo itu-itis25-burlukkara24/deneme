@@ -5,7 +5,7 @@ import './Hero.css';
 const Hero = () => {
     const [displayText, setDisplayText] = useState('');
     const [showSubtitle, setShowSubtitle] = useState(false);
-    const fullText = 'Cheriko...';
+    const fullText = 'Zehram...';
 
     useEffect(() => {
         let currentIndex = 0;
@@ -17,47 +17,71 @@ const Hero = () => {
                 clearInterval(typingInterval);
                 setTimeout(() => setShowSubtitle(true), 500);
             }
-        }, 150);
+        }, 180);
 
         return () => clearInterval(typingInterval);
     }, []);
 
     return (
         <section className="hero">
-            {/* Van Gogh Animated Background */}
+            {/* Van Gogh Starry Night Background */}
             <div className="hero-bg">
+                {/* Swirls */}
                 <div className="swirl-container">
                     {[...Array(4)].map((_, i) => (
                         <motion.div
                             key={i}
                             className={`hero-swirl swirl-${i}`}
-                            animate={{
-                                rotate: 360,
-                            }}
+                            animate={{ rotate: 360 }}
                             transition={{
-                                rotate: { duration: 30 + i * 5, repeat: Infinity, ease: "linear" },
+                                duration: 40 + i * 10,
+                                repeat: Infinity,
+                                ease: "linear"
                             }}
                         />
                     ))}
                 </div>
 
-                {/* Floating Stars */}
+                {/* Stars */}
                 <div className="stars-container">
-                    {[...Array(12)].map((_, i) => (
+                    {[...Array(15)].map((_, i) => (
                         <div
                             key={i}
                             className="floating-star"
                             style={{
-                                left: `${10 + (i * 8)}%`,
-                                top: `${10 + (i * 7)}%`,
-                                width: `${3 + (i % 3)}px`,
-                                height: `${3 + (i % 3)}px`,
-                                animationDelay: `${i * 0.3}s`,
+                                left: `${5 + (i * 6.5)}%`,
+                                top: `${10 + (i * 5.5)}%`,
+                                width: `${4 + (i % 3)}px`,
+                                height: `${4 + (i % 3)}px`,
+                                animationDelay: `${i * 0.2}s`,
                             }}
                         />
                     ))}
                 </div>
+
+                {/* Big Stars - Van Gogh Style */}
+                <div className="big-stars">
+                    <div className="big-star star-1">🌟</div>
+                    <div className="big-star star-2">⭐</div>
+                    <div className="big-star star-3">✨</div>
+                </div>
             </div>
+
+            {/* Moon */}
+            <motion.div
+                className="moon"
+                animate={{
+                    scale: [1, 1.05, 1],
+                    boxShadow: [
+                        "0 0 60px var(--gold-glow)",
+                        "0 0 100px var(--gold-glow)",
+                        "0 0 60px var(--gold-glow)"
+                    ]
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+                🌙
+            </motion.div>
 
             {/* Content */}
             <div className="hero-content">
@@ -77,7 +101,7 @@ const Hero = () => {
                     animate={showSubtitle ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 1, ease: "easeOut" }}
                 >
-                    Seninle başlayan hikayemiz...
+                    Yıldızlı bir gecede seninle...
                 </motion.p>
             </div>
 
@@ -88,7 +112,7 @@ const Hero = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 3, duration: 1 }}
             >
-                <span>Keşfetmeye başla</span>
+                <span>Merdivene adım at</span>
                 <div className="scroll-arrow" />
             </motion.div>
         </section>

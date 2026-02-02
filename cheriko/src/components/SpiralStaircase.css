@@ -1,0 +1,171 @@
+/* ============================================
+   Spiral Staircase Styles
+   ============================================ */
+
+.spiral-section {
+    position: relative;
+    min-height: 300vh;
+    padding: var(--space-lg) var(--space-md);
+    perspective: 1000px;
+}
+
+/* Header */
+.spiral-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    position: sticky;
+    top: 20vh;
+    z-index: 10;
+}
+
+.spiral-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    margin-bottom: var(--space-sm);
+}
+
+.spiral-subtitle {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--cream-soft);
+}
+
+/* Staircase Container */
+.staircase-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-lg) 0;
+    transform-style: preserve-3d;
+}
+
+/* Central Pole */
+.staircase-pole {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: linear-gradient(180deg,
+            var(--gold) 0%,
+            var(--starry-blue) 50%,
+            var(--gold) 100%);
+    transform: translateX(-50%);
+    border-radius: 4px;
+    box-shadow: 0 0 20px var(--gold-glow);
+    z-index: 1;
+}
+
+/* Rail */
+.staircase-rail {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    transform: translateX(-50%);
+    border-left: 3px solid var(--gold);
+    border-right: 3px solid var(--gold);
+    border-radius: 100px;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+/* Steps Container */
+.staircase-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    position: relative;
+    z-index: 5;
+}
+
+/* Individual Step */
+.stair-step {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    transform-style: preserve-3d;
+}
+
+.stair-step.step-left {
+    justify-content: flex-start;
+    padding-right: 55%;
+}
+
+.stair-step.step-right {
+    justify-content: flex-end;
+    padding-left: 55%;
+}
+
+/* Rail Connection (Rope) */
+.rail-connection {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.step-left .rail-connection {
+    right: calc(45% - 30px);
+}
+
+.step-right .rail-connection {
+    left: calc(45% - 30px);
+}
+
+.connection-rope {
+    width: 3px;
+    height: 60px;
+    background: linear-gradient(180deg,
+            var(--gold) 0%,
+            var(--starry-light) 50%,
+            transparent 100%);
+    animation: ropeSwing 4s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+@keyframes ropeSwing {
+
+    0%,
+    100% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+}
+
+.connection-hook {
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-top: -5px;
+    text-shadow: 0 0 10px var(--gold-glow);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .spiral-section {
+        min-height: 200vh;
+        padding: var(--space-md) var(--space-sm);
+    }
+
+    .stair-step.step-left,
+    .stair-step.step-right {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .staircase-pole {
+        display: none;
+    }
+
+    .rail-connection {
+        display: none;
+    }
+
+    .staircase-steps {
+        gap: var(--space-lg);
+    }
+}

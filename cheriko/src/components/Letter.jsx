@@ -5,26 +5,16 @@ import './Letter.css';
 const Letter = () => {
     return (
         <section className="letter-section">
-            {/* Floating Stars Background */}
+            {/* Floating Stars */}
             <div className="letter-stars">
-                {[...Array(20)].map((_, i) => (
-                    <motion.div
+                {[...Array(12)].map((_, i) => (
+                    <div
                         key={i}
                         className="letter-star"
                         style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            width: `${Math.random() * 3 + 1}px`,
-                            height: `${Math.random() * 3 + 1}px`,
-                        }}
-                        animate={{
-                            opacity: [0.2, 0.8, 0.2],
-                            scale: [1, 1.3, 1],
-                        }}
-                        transition={{
-                            duration: 3 + Math.random() * 2,
-                            repeat: Infinity,
-                            delay: Math.random() * 2,
+                            left: `${8 + i * 8}%`,
+                            top: `${15 + (i % 3) * 25}%`,
+                            animationDelay: `${i * 0.25}s`,
                         }}
                     />
                 ))}
@@ -41,22 +31,27 @@ const Letter = () => {
                 <h2 className="letter-section-title">
                     Sana <span className="gold-text">Mektubum</span>
                 </h2>
+                <div className="title-decoration">
+                    <span>✨</span>
+                    <span>🌙</span>
+                    <span>✨</span>
+                </div>
             </motion.div>
 
             {/* Letter Card */}
             <motion.div
                 className="letter-container"
-                initial={{ opacity: 0, y: 50, rotateX: 10 }}
-                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 1, ease: "easeOut" }}
             >
                 <div className="letter-card glass-card">
-                    {/* Decorative Corner */}
-                    <div className="letter-corner top-left" />
-                    <div className="letter-corner top-right" />
-                    <div className="letter-corner bottom-left" />
-                    <div className="letter-corner bottom-right" />
+                    {/* Van Gogh Frame Corners */}
+                    <div className="letter-corner top-left">⭐</div>
+                    <div className="letter-corner top-right">🌟</div>
+                    <div className="letter-corner bottom-left">✨</div>
+                    <div className="letter-corner bottom-right">⭐</div>
 
                     {/* Letter Content */}
                     <div className="letter-content handwriting">
@@ -67,7 +62,7 @@ const Letter = () => {
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                transition={{ duration: 0.5, delay: index * 0.08 }}
                             >
                                 {paragraph}
                             </motion.p>

@@ -1,80 +1,128 @@
 /* ============================================
-   Memory Card Styles
+   Memory Card Styles - Van Gogh Edition
    ============================================ */
 
 .memory-card-wrapper {
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
     padding: var(--space-sm);
+    transform-style: preserve-3d;
+}
+
+.memory-card-wrapper.spiral-mode {
+    animation: cardFloat 6s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(1deg);
+    }
 }
 
 .memory-card-wrapper.left {
     align-self: flex-start;
-    margin-right: auto;
 }
 
 .memory-card-wrapper.right {
     align-self: flex-end;
-    margin-left: auto;
 }
 
+/* Main Card */
 .memory-card {
     position: relative;
     padding: var(--space-md);
-    overflow: hidden;
+    overflow: visible;
     transition: var(--transition-smooth);
+    transform-style: preserve-3d;
 }
 
 .memory-card:hover {
-    transform: translateY(-5px);
     box-shadow:
         var(--glass-shadow),
-        0 0 40px var(--gold-glow);
+        0 0 40px var(--gold-glow),
+        0 0 80px rgba(46, 80, 144, 0.3);
+}
+
+/* Hanging Frame Wires */
+.hanging-frame {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 50px;
+    pointer-events: none;
+}
+
+.frame-wire {
+    position: absolute;
+    top: 0;
+    width: 3px;
+    height: 50px;
+    background: linear-gradient(180deg, var(--gold) 0%, var(--starry-light) 100%);
+    transform-origin: top center;
+}
+
+.left-wire {
+    left: 20%;
+    transform: rotate(-15deg);
+}
+
+.right-wire {
+    right: 20%;
+    transform: rotate(15deg);
 }
 
 /* Date Badge */
 .memory-date {
     position: absolute;
-    top: -10px;
-    right: var(--space-md);
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 0.5rem 1.5rem;
-    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-    border-radius: 0 0 15px 15px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+    border-radius: 20px;
     box-shadow: 0 4px 15px var(--gold-glow);
+    z-index: 10;
 }
 
 .date-text {
-    color: var(--bordo-dark);
-    font-size: 1.1rem;
+    color: var(--starry-deep);
+    font-size: 1rem;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 /* Image Container */
 .memory-image-container {
     width: 100%;
-    height: 200px;
+    height: 220px;
     border-radius: 15px;
     overflow: hidden;
+    margin-top: var(--space-sm);
     margin-bottom: var(--space-sm);
     position: relative;
+    border: 3px solid var(--starry-blue);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .memory-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition-smooth);
-}
-
-.memory-card:hover .memory-image {
-    transform: scale(1.05);
 }
 
 /* Image Placeholder */
 .memory-image-placeholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--night-deep) 0%, var(--bordo-dark) 100%);
+    background: linear-gradient(135deg, var(--starry-deep) 0%, var(--starry-dark) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,12 +136,11 @@
     position: absolute;
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, var(--starry-blue) 0%, transparent 70%);
-    opacity: 0.3;
-    animation: placeholderSpin 15s linear infinite;
+    background: radial-gradient(circle, var(--swirl-blue) 0%, transparent 70%);
+    animation: placeholderRotate 20s linear infinite;
 }
 
-@keyframes placeholderSpin {
+@keyframes placeholderRotate {
     from {
         transform: rotate(0deg);
     }
@@ -103,66 +150,20 @@
     }
 }
 
-.placeholder-text {
-    font-size: 3rem;
-    z-index: 1;
-}
-
-.placeholder-hint {
-    font-family: var(--font-handwriting);
-    font-size: 1rem;
-    color: var(--gold);
-    opacity: 0.7;
-    z-index: 1;
-}
-
-/* Content */
-.memory-content {
-    padding-top: var(--space-xs);
-}
-
-.memory-title {
-    color: var(--gold);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 20px var(--gold-glow);
-}
-
-.memory-description {
-    color: var(--cream-soft);
-    font-size: 1rem;
-    line-height: 1.7;
-}
-
-/* Decorative Stars */
-.memory-decoration {
+.placeholder-stars {
     position: absolute;
-    bottom: 10px;
-    right: 15px;
-    display: flex;
-    gap: 8px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
-.decoration-star {
-    width: 6px;
-    height: 6px;
-    background: var(--gold);
-    border-radius: 50%;
-    opacity: 0.6;
-    animation: decorationTwinkle 2s ease-in-out infinite;
+.mini-star {
+    position: absolute;
+    font-size: 1.2rem;
+    animation: starTwinkle 2s ease-in-out infinite;
 }
 
-.decoration-star:nth-child(2) {
-    animation-delay: 0.5s;
-    width: 8px;
-    height: 8px;
-}
-
-.decoration-star:nth-child(3) {
-    animation-delay: 1s;
-}
-
-@keyframes decorationTwinkle {
+@keyframes starTwinkle {
 
     0%,
     100% {
@@ -176,6 +177,60 @@
     }
 }
 
+.placeholder-text {
+    font-size: 3rem;
+    z-index: 1;
+}
+
+.placeholder-hint {
+    font-family: var(--font-handwriting);
+    font-size: 1rem;
+    color: var(--gold);
+    opacity: 0.8;
+    z-index: 1;
+}
+
+/* Content */
+.memory-content {
+    text-align: center;
+    padding-top: var(--space-xs);
+}
+
+.memory-title {
+    color: var(--gold);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 15px var(--gold-glow);
+}
+
+.memory-description {
+    color: var(--cream-soft);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Van Gogh Stars Decoration */
+.memory-stars {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    display: flex;
+    gap: 5px;
+}
+
+.deco-star {
+    font-size: 0.9rem;
+    animation: starPulse 2s ease-in-out infinite;
+}
+
+.deco-star:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.deco-star:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .memory-card-wrapper {
@@ -185,7 +240,6 @@
     .memory-card-wrapper.left,
     .memory-card-wrapper.right {
         align-self: center;
-        margin: 0 auto;
     }
 
     .memory-image-container {
@@ -193,6 +247,14 @@
     }
 
     .memory-title {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+
+    .hanging-frame {
+        display: none;
+    }
+
+    .memory-card-wrapper.spiral-mode {
+        animation: none;
     }
 }

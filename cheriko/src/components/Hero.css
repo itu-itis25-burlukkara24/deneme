@@ -1,5 +1,5 @@
 /* ============================================
-   Hero Section Styles
+   Hero Section - Van Gogh Starry Night
    ============================================ */
 
 .hero {
@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background: radial-gradient(ellipse at top, var(--starry-dark) 0%, var(--starry-deep) 100%);
 }
 
 /* Background */
@@ -33,42 +34,41 @@
     position: absolute;
     border-radius: 50%;
     filter: blur(100px);
-    opacity: 0.5;
+    opacity: 0.6;
     will-change: transform;
 }
 
-/* Swirl positions and colors - simplified to 4 */
+/* Swirl positions - Van Gogh colors */
 .swirl-0 {
     width: 500px;
     height: 500px;
-    background: var(--starry-blue);
-    top: -10%;
-    right: -10%;
+    background: var(--swirl-blue);
+    top: -150px;
+    right: -150px;
 }
 
 .swirl-1 {
     width: 400px;
     height: 400px;
-    background: var(--bordo);
+    background: var(--swirl-cyan);
     bottom: 10%;
-    left: -5%;
+    left: -100px;
 }
 
 .swirl-2 {
     width: 350px;
     height: 350px;
-    background: var(--gold);
-    top: 50%;
-    right: 10%;
-    opacity: 0.35;
+    background: var(--swirl-gold);
+    top: 40%;
+    right: 5%;
 }
 
 .swirl-3 {
     width: 450px;
     height: 450px;
-    background: var(--night-blue);
+    background: var(--swirl-blue);
     top: 20%;
-    left: 30%;
+    left: 20%;
 }
 
 /* Stars */
@@ -81,9 +81,9 @@
 
 .floating-star {
     position: absolute;
-    background: var(--gold-light);
+    background: var(--gold-bright);
     border-radius: 50%;
-    box-shadow: 0 0 6px var(--gold);
+    box-shadow: 0 0 8px var(--gold), 0 0 15px var(--gold-glow);
     animation: twinkle 3s ease-in-out infinite;
 }
 
@@ -97,14 +97,72 @@
 
     50% {
         opacity: 1;
-        transform: scale(1.2);
+        transform: scale(1.3);
     }
+}
+
+/* Big Stars */
+.big-stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.big-star {
+    position: absolute;
+    font-size: 3rem;
+    animation: bigStarPulse 4s ease-in-out infinite;
+}
+
+.star-1 {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.star-2 {
+    top: 25%;
+    right: 15%;
+    animation-delay: 1s;
+    font-size: 2.5rem;
+}
+
+.star-3 {
+    bottom: 30%;
+    left: 20%;
+    animation-delay: 2s;
+    font-size: 2rem;
+}
+
+@keyframes bigStarPulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(15deg);
+    }
+}
+
+/* Moon */
+.moon {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    font-size: 6rem;
+    z-index: 5;
+    filter: drop-shadow(0 0 30px var(--gold-glow));
 }
 
 /* Content */
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     text-align: center;
     padding: var(--space-md);
 }
@@ -113,13 +171,13 @@
     font-size: clamp(3rem, 12vw, 8rem);
     color: var(--cream);
     text-shadow:
-        0 0 40px var(--bordo-glow),
-        0 0 80px var(--gold-glow);
+        0 0 40px var(--gold-glow),
+        0 0 80px var(--starry-blue);
     margin-bottom: var(--space-md);
 }
 
 .typing-text {
-    background: linear-gradient(135deg, var(--cream) 0%, var(--gold-light) 50%, var(--cream) 100%);
+    background: linear-gradient(135deg, var(--cream) 0%, var(--gold) 50%, var(--cream) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -162,33 +220,31 @@
 .hero-subtitle {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: var(--gold);
-    opacity: 0.9;
+    opacity: 0.95;
     text-shadow: 0 0 20px var(--gold-glow);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     .hero-swirl {
-        filter: blur(60px);
+        filter: blur(80px);
     }
 
     .swirl-0,
     .swirl-1,
     .swirl-2,
     .swirl-3 {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
     }
 
-    .swirl-4,
-    .swirl-5,
-    .swirl-6,
-    .swirl-7,
-    .swirl-8,
-    .swirl-9,
-    .swirl-10,
-    .swirl-11 {
-        width: 180px;
-        height: 180px;
+    .moon {
+        font-size: 4rem;
+        top: 5%;
+        right: 5%;
+    }
+
+    .big-star {
+        font-size: 2rem;
     }
 }

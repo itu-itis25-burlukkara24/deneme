@@ -1,5 +1,5 @@
 /* ============================================
-   Letter Section Styles
+   Letter Section - Van Gogh Style
    ============================================ */
 
 .letter-section {
@@ -12,8 +12,8 @@
     position: relative;
     background: linear-gradient(180deg,
             transparent 0%,
-            var(--night-deep) 50%,
-            var(--bordo-dark) 100%);
+            var(--starry-deep) 30%,
+            var(--starry-dark) 100%);
 }
 
 /* Background Stars */
@@ -29,9 +29,12 @@
 
 .letter-star {
     position: absolute;
-    background: var(--gold-light);
+    width: 5px;
+    height: 5px;
+    background: var(--gold-bright);
     border-radius: 50%;
-    box-shadow: 0 0 6px var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+    animation: starPulse 3s ease-in-out infinite;
 }
 
 /* Header */
@@ -42,59 +45,85 @@
 
 .letter-section-title {
     font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-sm);
+}
+
+.title-decoration {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.title-decoration span {
+    animation: starPulse 2s ease-in-out infinite;
+}
+
+.title-decoration span:nth-child(2) {
+    animation-delay: 0.5s;
+    font-size: 2rem;
+}
+
+.title-decoration span:nth-child(3) {
+    animation-delay: 1s;
 }
 
 /* Letter Container */
 .letter-container {
     width: 100%;
     max-width: 700px;
-    perspective: 1000px;
 }
 
 .letter-card {
     position: relative;
     padding: var(--space-lg);
     background: linear-gradient(135deg,
-            rgba(74, 13, 18, 0.85) 0%,
-            rgba(30, 58, 95, 0.7) 100%);
+            rgba(30, 58, 95, 0.85) 0%,
+            rgba(11, 22, 40, 0.9) 100%);
     border: 2px solid var(--gold);
     box-shadow:
         0 25px 50px rgba(0, 0, 0, 0.5),
         0 0 40px var(--gold-glow),
-        inset 0 0 60px rgba(114, 47, 55, 0.3);
+        inset 0 0 60px rgba(46, 80, 144, 0.2);
 }
 
-/* Decorative Corners */
+/* Van Gogh Star Corners */
 .letter-corner {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    border-color: var(--gold);
-    border-style: solid;
+    font-size: 1.5rem;
+    animation: cornerSpin 8s linear infinite;
 }
 
 .letter-corner.top-left {
     top: 15px;
     left: 15px;
-    border-width: 3px 0 0 3px;
 }
 
 .letter-corner.top-right {
     top: 15px;
     right: 15px;
-    border-width: 3px 3px 0 0;
+    animation-direction: reverse;
 }
 
 .letter-corner.bottom-left {
     bottom: 15px;
     left: 15px;
-    border-width: 0 0 3px 3px;
+    animation-direction: reverse;
 }
 
 .letter-corner.bottom-right {
     bottom: 15px;
     right: 15px;
-    border-width: 0 3px 3px 0;
+}
+
+@keyframes cornerSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Letter Content */
@@ -126,7 +155,7 @@
 .signature-heart {
     font-size: 3rem;
     animation: heartGlow 2s ease-in-out infinite;
-    filter: drop-shadow(0 0 10px var(--bordo-glow));
+    filter: drop-shadow(0 0 10px var(--gold-glow));
 }
 
 @keyframes heartGlow {
@@ -134,12 +163,10 @@
     0%,
     100% {
         transform: scale(1);
-        filter: drop-shadow(0 0 10px var(--bordo-glow));
     }
 
     50% {
-        transform: scale(1.1);
-        filter: drop-shadow(0 0 25px var(--gold-glow));
+        transform: scale(1.15);
     }
 }
 
@@ -154,28 +181,7 @@
     }
 
     .letter-corner {
-        width: 20px;
-        height: 20px;
-    }
-
-    .letter-corner.top-left,
-    .letter-corner.top-right {
-        top: 10px;
-    }
-
-    .letter-corner.bottom-left,
-    .letter-corner.bottom-right {
-        bottom: 10px;
-    }
-
-    .letter-corner.top-left,
-    .letter-corner.bottom-left {
-        left: 10px;
-    }
-
-    .letter-corner.top-right,
-    .letter-corner.bottom-right {
-        right: 10px;
+        font-size: 1.2rem;
     }
 
     .signature-heart {

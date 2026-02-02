@@ -1,5 +1,5 @@
 /* ============================================
-   🎨 CHERIKO - Van Gogh Temalı Romantik Site
+   🎨 ZEHRAM - Van Gogh Yıldızlı Gece Teması
    Global Styles & Design System
    ============================================ */
 
@@ -7,54 +7,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ============================================
-   CSS Variables - Van Gogh Color Palette
+   CSS Variables - Van Gogh Starry Night Palette
    ============================================ */
 :root {
-  /* Bordo Tonları (Ana Renkler) */
-  --bordo-dark: #4A0D12;
-  --bordo: #722F37;
-  --bordo-light: #8B3A42;
-  --bordo-glow: rgba(114, 47, 55, 0.6);
-  
-  /* Yıldızlı Gece Renkleri */
-  --night-deep: #0F1A2E;
-  --night-blue: #1E3A5F;
+  /* Yıldızlı Gece Ana Renkleri */
+  --starry-deep: #0B1628;
+  --starry-dark: #1E3A5F;
   --starry-blue: #2E5090;
   --starry-light: #4A7CC9;
-  
-  /* Altın Aksanlar */
+  --starry-cyan: #6BA3D6;
+
+  /* Van Gogh Sarıları */
   --gold: #F4D35E;
+  --gold-bright: #FFE066;
   --gold-light: #FFE699;
-  --gold-glow: rgba(244, 211, 94, 0.4);
-  
+  --gold-glow: rgba(244, 211, 94, 0.5);
+
+  /* Bordo Aksanlar */
+  --bordo-dark: #4A0D12;
+  --bordo: #722F37;
+  --bordo-glow: rgba(114, 47, 55, 0.5);
+
+  /* Swirl Renkleri */
+  --swirl-blue: rgba(46, 80, 144, 0.6);
+  --swirl-cyan: rgba(74, 124, 201, 0.4);
+  --swirl-gold: rgba(244, 211, 94, 0.3);
+
   /* Nötr Tonlar */
   --cream: #FFF8E7;
   --cream-soft: rgba(255, 248, 231, 0.9);
   --white: #FFFFFF;
-  --text-dark: #1A1A1A;
-  
-  /* Swirl Overlay Renkleri */
-  --swirl-1: rgba(46, 80, 144, 0.3);
-  --swirl-2: rgba(114, 47, 55, 0.4);
-  --swirl-3: rgba(244, 211, 94, 0.2);
-  
+
   /* Glassmorphism */
-  --glass-bg: rgba(74, 13, 18, 0.7);
+  --glass-bg: rgba(30, 58, 95, 0.7);
   --glass-border: rgba(244, 211, 94, 0.3);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  
+
   /* Typography */
   --font-elegant: 'Cormorant Garamond', Georgia, serif;
   --font-handwriting: 'Dancing Script', cursive;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  
+
   /* Spacing */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
   --space-lg: 4rem;
   --space-xl: 8rem;
-  
+
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -79,7 +79,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: linear-gradient(135deg, var(--night-deep) 0%, var(--bordo-dark) 50%, var(--night-blue) 100%);
+  background: var(--starry-deep);
   color: var(--cream);
   line-height: 1.6;
   overflow-x: hidden;
@@ -89,7 +89,12 @@ body {
 /* ============================================
    Typography
    ============================================ */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-elegant);
   font-weight: 600;
   line-height: 1.2;
@@ -124,9 +129,9 @@ p {
 }
 
 /* ============================================
-   Van Gogh Swirl Background
+   Van Gogh Starry Night Background
    ============================================ */
-.van-gogh-bg {
+.starry-night-bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -134,90 +139,87 @@ p {
   height: 100%;
   pointer-events: none;
   z-index: -1;
+  background: radial-gradient(ellipse at top, var(--starry-dark) 0%, var(--starry-deep) 100%);
   overflow: hidden;
 }
 
-.swirl {
+/* Van Gogh Swirls */
+.vg-swirl {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
-  animation: swirlFloat 20s ease-in-out infinite;
+  filter: blur(80px);
+  will-change: transform;
 }
 
-.swirl-1 {
-  width: 600px;
-  height: 600px;
-  background: var(--swirl-1);
-  top: -200px;
-  right: -200px;
-  animation-delay: 0s;
-}
-
-.swirl-2 {
+.vg-swirl-1 {
   width: 500px;
   height: 500px;
-  background: var(--swirl-2);
-  bottom: -150px;
-  left: -150px;
-  animation-delay: -7s;
+  background: var(--swirl-blue);
+  top: -100px;
+  right: -100px;
+  animation: swirlRotate 40s linear infinite;
 }
 
-.swirl-3 {
+.vg-swirl-2 {
   width: 400px;
   height: 400px;
-  background: var(--swirl-3);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: -14s;
+  background: var(--swirl-cyan);
+  bottom: 20%;
+  left: -100px;
+  animation: swirlRotate 35s linear infinite reverse;
 }
 
-@keyframes swirlFloat {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
+.vg-swirl-3 {
+  width: 350px;
+  height: 350px;
+  background: var(--swirl-gold);
+  top: 40%;
+  right: 10%;
+  animation: swirlRotate 30s linear infinite;
+}
+
+.vg-swirl-4 {
+  width: 300px;
+  height: 300px;
+  background: var(--swirl-blue);
+  bottom: -50px;
+  left: 30%;
+  animation: swirlRotate 45s linear infinite reverse;
+}
+
+@keyframes swirlRotate {
+  from {
+    transform: rotate(0deg);
   }
-  25% {
-    transform: translate(30px, -30px) rotate(90deg) scale(1.1);
-  }
-  50% {
-    transform: translate(-20px, 20px) rotate(180deg) scale(0.95);
-  }
-  75% {
-    transform: translate(20px, 10px) rotate(270deg) scale(1.05);
+
+  to {
+    transform: rotate(360deg);
   }
 }
 
-/* ============================================
-   Stars Animation
-   ============================================ */
-.star {
+/* Stars */
+.vg-star {
   position: absolute;
-  background: var(--gold-light);
+  background: var(--gold-bright);
   border-radius: 50%;
-  animation: twinkle 3s ease-in-out infinite;
+  box-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold-glow);
+  animation: starPulse 3s ease-in-out infinite;
 }
 
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 0.3;
+@keyframes starPulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
     transform: scale(1);
+    box-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold-glow);
   }
+
   50% {
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.3);
+    box-shadow: 0 0 20px var(--gold), 0 0 40px var(--gold-glow);
   }
-}
-
-/* ============================================
-   Glassmorphism Cards
-   ============================================ */
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  box-shadow: var(--glass-shadow);
 }
 
 /* ============================================
@@ -234,7 +236,7 @@ p {
   left: -3px;
   right: -3px;
   bottom: -3px;
-  background: linear-gradient(45deg, var(--bordo), var(--gold), var(--starry-blue), var(--bordo));
+  background: linear-gradient(45deg, var(--starry-blue), var(--gold), var(--starry-light), var(--gold));
   background-size: 300% 300%;
   border-radius: 23px;
   z-index: -1;
@@ -242,39 +244,27 @@ p {
 }
 
 @keyframes brushGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
 }
 
 /* ============================================
-   Button Styles
+   Glassmorphism Cards
    ============================================ */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
-  font-family: var(--font-elegant);
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--cream);
-  background: linear-gradient(135deg, var(--bordo) 0%, var(--bordo-dark) 100%);
-  border: 2px solid var(--gold);
-  border-radius: 50px;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  text-decoration: none;
-}
-
-.btn:hover {
-  background: linear-gradient(135deg, var(--bordo-light) 0%, var(--bordo) 100%);
-  box-shadow: 0 0 30px var(--gold-glow);
-  transform: translateY(-2px);
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
 }
 
 /* ============================================
@@ -308,21 +298,15 @@ p {
 }
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(-50%) translateY(0);
   }
+
   50% {
     transform: translateX(-50%) translateY(10px);
   }
-}
-
-/* ============================================
-   Section Styles
-   ============================================ */
-section {
-  position: relative;
-  min-height: 100vh;
-  padding: var(--space-lg) var(--space-md);
 }
 
 /* ============================================
@@ -332,14 +316,17 @@ section {
   html {
     font-size: 14px;
   }
-  
-  section {
-    padding: var(--space-md) var(--space-sm);
+
+  .vg-swirl {
+    filter: blur(60px);
   }
-  
-  .swirl-1, .swirl-2, .swirl-3 {
-    width: 300px;
-    height: 300px;
+
+  .vg-swirl-1,
+  .vg-swirl-2,
+  .vg-swirl-3,
+  .vg-swirl-4 {
+    width: 200px;
+    height: 200px;
   }
 }
 
@@ -360,20 +347,26 @@ section {
   min-height: 100vh;
 }
 
-/* Hide scrollbar but keep functionality */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--night-deep);
+  background: var(--starry-deep);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bordo);
+  background: var(--starry-blue);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--bordo-light);
+  background: var(--starry-light);
+}
+
+/* Selection */
+::selection {
+  background: var(--starry-blue);
+  color: var(--gold);
 }

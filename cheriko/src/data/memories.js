@@ -1,4 +1,4 @@
-// Cheriko için anı verileri
+// Zehram için anı verileri
 // Fotoğraflar eklendiğinde imageSrc alanlarını güncelleyeceğiz
 
 export const memories = [
@@ -44,7 +44,7 @@ export const memories = [
     }
 ];
 
-export const letterContent = `Sevgili Cheriko,
+export const letterContent = `Sevgili Zehram,
 
 Sana bu satırları yazarken, yüzümde bir gülümseme var. Çünkü sen varsın, çünkü hayatımın en güzel parçası sensin.
 

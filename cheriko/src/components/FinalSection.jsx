@@ -4,24 +4,32 @@ import './FinalSection.css';
 const FinalSection = () => {
     return (
         <section className="final-section">
-            {/* Starry Background - CSS animations instead of Framer */}
+            {/* Starry Background */}
             <div className="final-bg">
-                {[...Array(15)].map((_, i) => (
+                {[...Array(20)].map((_, i) => (
                     <div
                         key={i}
                         className="final-star"
                         style={{
-                            left: `${5 + (i * 6.5)}%`,
-                            top: `${10 + (i * 5.5)}%`,
-                            width: `${2 + (i % 3)}px`,
-                            height: `${2 + (i % 3)}px`,
-                            animationDelay: `${i * 0.2}s`,
+                            left: `${5 + (i * 4.8)}%`,
+                            top: `${10 + (i % 4) * 20}%`,
+                            width: `${3 + (i % 3)}px`,
+                            height: `${3 + (i % 3)}px`,
+                            animationDelay: `${i * 0.15}s`,
                         }}
                     />
                 ))}
+
+                {/* Big Stars */}
+                <div className="final-big-stars">
+                    <span className="big-star">🌟</span>
+                    <span className="big-star">⭐</span>
+                    <span className="big-star">✨</span>
+                    <span className="big-star">🌟</span>
+                </div>
             </div>
 
-            {/* Main Heart */}
+            {/* Main Content */}
             <motion.div
                 className="final-content"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -29,10 +37,27 @@ const FinalSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 1, ease: "easeOut" }}
             >
+                {/* Moon */}
+                <motion.div
+                    className="final-moon"
+                    animate={{
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 5, -5, 0],
+                    }}
+                    transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                >
+                    🌙
+                </motion.div>
+
+                {/* Giant Heart */}
                 <motion.div
                     className="giant-heart"
                     animate={{
-                        scale: [1, 1.1, 1],
+                        scale: [1, 1.15, 1],
                     }}
                     transition={{
                         duration: 1.5,
@@ -60,18 +85,18 @@ const FinalSection = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                    Cheriko ❤️
+                    Zehram ❤️
                 </motion.p>
 
-                {/* Floating Hearts - Simplified */}
+                {/* Floating Hearts */}
                 <div className="floating-hearts">
-                    {[...Array(4)].map((_, i) => (
+                    {[...Array(5)].map((_, i) => (
                         <span
                             key={i}
                             className="mini-heart"
                             style={{
-                                left: `${15 + i * 20}%`,
-                                animationDelay: `${i * 1}s`,
+                                left: `${10 + i * 20}%`,
+                                animationDelay: `${i * 0.8}s`,
                             }}
                         >
                             💕
@@ -84,7 +109,6 @@ const FinalSection = () => {
             <div className="final-swirls">
                 <div className="final-swirl swirl-a" />
                 <div className="final-swirl swirl-b" />
-                <div className="final-swirl swirl-c" />
             </div>
         </section>
     );
